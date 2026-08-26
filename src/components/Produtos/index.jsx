@@ -7,24 +7,30 @@ import { CarrinhoContext } from "@/context/CarrinhoContext";
 const Produtos = () => {
   const { carrinho, setCarrinho } = useContext(CarrinhoContext)
 
-  function adicionarProduto(novoProduto) {
-    const temOProduto = carrinho.some((itemDoCarrinho) => {
-      itemDoCarrinho.id === novoProduto.id;
-    })
+function adicionarProduto(novoProduto) {
+  const temOProduto = carrinho.some((itemDoCarrinho) => itemDoCarrinho.id === novoProduto.id);
 
-    if (!temOProduto) {
-      novoProduto.quantidade = 1;
-      return setCarrinho((carrinhoAnterior) => [
-        ...carrinhoAnterior,
-        novoProduto
-      ])
-    }
+  console.log(carrinho);
 
-    setCarrinho((carrinhoAnterior) => carrinhoAnterior.map((itemDoCarrinho) => {
-      if (itemDoCarrinho.id === novoProduto.id) itemDoCarrinho.quantidade += 1
-      return itemDoCarrinho
-    }))
+  if (!temOProduto) {
+    console.log("Não tem produto");
+    // Criamos um novo objeto com quantidade 1, sem modificar o novoProduto original
+    return setCarrinho((carrinhoAnterior) => [
+      ...carrinhoAnterior,
+      { ...novoProduto, quantidade: 1 }
+    ]);
   }
+
+  // CORREÇÃO AQUI: Não usamos +=, criamos um objeto novo mapeado
+  setCarrinho((carrinhoAnterior) =>
+    carrinhoAnterior.map((itemDoCarrinho) =>
+      itemDoCarrinho.id === novoProduto.id
+        ? { ...itemDoCarrinho, quantidade: itemDoCarrinho.quantidade + 1 }
+        : itemDoCarrinho
+    )
+  );
+}
+
 
   return (
     <section role="produtos" aria-label="Produtos que estão bombando!">
