@@ -7,10 +7,7 @@ export const useCarrinhoContext = () => {
     function adicionarProduto(novoProduto) {
         const temOProduto = carrinho.some((itemDoCarrinho) => itemDoCarrinho.id === novoProduto.id);
 
-        console.log(carrinho);
-
         if (!temOProduto) {
-            console.log("Não tem produto");
             // Criamos um novo objeto com quantidade 1, sem modificar o novoProduto original
             return setCarrinho((carrinhoAnterior) => [
                 ...carrinhoAnterior,
@@ -18,7 +15,7 @@ export const useCarrinhoContext = () => {
             ]);
         }
 
-        // CORREÇÃO AQUI: Não usamos +=, criamos um objeto novo mapeado
+        // Não usamos +=, criamos um objeto novo mapeado
         setCarrinho((carrinhoAnterior) =>
             carrinhoAnterior.map((itemDoCarrinho) =>
                 itemDoCarrinho.id === novoProduto.id
