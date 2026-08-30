@@ -41,10 +41,19 @@ export const useCarrinhoContext = () => {
         )
     }
 
+    function removerProdutoCarrinho(idProduto) {
+        const item = carrinho.find(item => item.id === idProduto);
+
+        setCarrinho((carrinhoAnterior) =>
+            carrinhoAnterior.filter((carrinhoItem) => carrinhoItem.id !== item.id)
+        )
+    }
+
     return {
         carrinho,
         setCarrinho,
         adicionarProduto,
-        removerProduto
+        removerProduto,
+        removerProdutoCarrinho
     }
 }
