@@ -75,6 +75,8 @@ export const useCarrinhoContext = () => {
         setCarrinho,
         adicionarProduto,
         removerProduto,
-        removerProdutoCarrinho
+        removerProdutoCarrinho,
+        valorTotal,
+        quantidade
     }
 }

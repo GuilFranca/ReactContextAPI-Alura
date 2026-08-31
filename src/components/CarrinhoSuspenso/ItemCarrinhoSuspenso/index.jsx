@@ -3,8 +3,8 @@ import Botao from "@/components/Botao";
 import ValorFormatado from "@/components/ValorFormatado";
 import { useCarrinhoContext } from "../../../hooks/useCarrinhoContext";
 
-const ItemCarrinhoSuspenso = ({itemCarrinho}) => {
-  const {removerProduto, adicionarProduto, removerProdutoCarrinho} = useCarrinhoContext();
+const ItemCarrinhoSuspenso = ({ itemCarrinho }) => {
+  const { removerProduto, adicionarProduto, removerProdutoCarrinho } = useCarrinhoContext();
   return (
     <li>
       <>
