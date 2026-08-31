@@ -3,8 +3,8 @@ import ItemCarrinho from "@/components/ItemCarrinho";
 import { useLocation } from "react-router-dom";
 import { useCarrinhoContext } from "../../hooks/useCarrinhoContext";
 
-const ListaProdutosCarrinho = ({ carrinho }) => {
-  const {removerProduto, adicionarProduto, removerProdutoCarrinho} = useCarrinhoContext();
+const ListaProdutosCarrinho = () => {
+  const {removerProduto, adicionarProduto, removerProdutoCarrinho, carrinho} = useCarrinhoContext();
   const location = useLocation();
   return (
     <ul className="list-unstyled">
