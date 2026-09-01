@@ -56,7 +56,6 @@ export const useCarrinhoContext = () => {
         )
     }
 
-
     const { totalTemp, quantidadeTemp } = useMemo(() => {
         return carrinho.reduce((acumulador, produto) => ({
             quantidadeTemp: acumulador.quantidadeTemp + produto.quantidade,
@@ -69,10 +68,9 @@ export const useCarrinhoContext = () => {
         );
     }, [carrinho])
 
-
     useEffect(() => {
         setQuantidade(quantidadeTemp);
-        setValorTotal(totalTemp)
+        setValorTotal(totalTemp);
     })
 
     return {
